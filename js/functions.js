@@ -22,11 +22,11 @@ console.log(fitsLength('проверяемая строка', 10));
 // Вариант 2 - проверяет length строки при условии, что она меньше или равна числу второго аргумента
 console.log('\nЗадание № 1. Вариант 2. Проверяет вписывается ли строка в указанную длину');
 const StringCheck = (str, strLength) => {
-	if (str.length <= strLength) {
-		return `${true} - строка проходит по длине`;
-	} else {
-		return `${false} — строка не проходит`;
-	}
+  if (str.length <= strLength) {
+    return `${true} - строка проходит по длине`;
+  } else {
+    return `${false} — строка не проходит`;
+  }
 };
 console.log(StringCheck('проверяемая строка', 20));
 console.log(StringCheck('проверяемая строка', 18));
@@ -42,10 +42,10 @@ console.log('\nЗадание № 2. Проверяет является ли с
  * @return {boolean}
  */
 const isPalindrome = (target) => {
-	const normalized = String(target).replaceAll(' ', '').toLowerCase();
-	const reversed = normalized.split('').reverse().join('');
+  const normalized = String(target).replaceAll(' ', '').toLowerCase();
+  const reversed = normalized.split('').reverse().join('');
 
-	return normalized === reversed;
+  return normalized === reversed;
 };
 console.log(isPalindrome('топот')); // Результат: true - строка является палиндромом
 console.log(isPalindrome('ДовОд')); // Результат: true - несмотря на разный регистр, тоже палиндром
@@ -59,9 +59,9 @@ console.log('\nЗадание № 3. Извлечёт из строки (или 
  * @return {number}
  */
 const parseDigits = (target) => {
-	const digits = String(target).replace(/[^0-9]/g, '');
+  const digits = String(target).replace(/[^0-9]/g, '');
 
-	return digits ? Number(digits) : NaN;
+  return digits ? Number(digits) : NaN;
 };
 console.log(parseDigits('2023 год')); // Результат: число 2023
 console.log(parseDigits('ECMAScript 2022')); // Результат: число 2022
@@ -80,9 +80,9 @@ console.log('\nЗадание № 4. Добавит в начало строки
  * @return {string}
  */
 const padStart = (target, length, pad) => {
-	const start = pad.repeat(length);
+  const start = pad.repeat(length);
 
-	return `${start}${target}`.slice(-length);
+  return `${start}${target}`.slice(-length);
 };
 
 // Добавочный символ использован один раз
