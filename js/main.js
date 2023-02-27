@@ -1,10 +1,25 @@
+// Массив описания
 const descriptions = [
   'Описание 1',
   'Описание 2',
   'Описание 3'
 ];
 
-// Определяет случайное описание
+// Массив сообщений
+const messages = [
+  'Всё отлично!',
+  'В целом всё неплохо. Но не всё.'
+];
+
+// Массив имён
+const names = [
+  'Александр',
+  'Иван',
+  'Кристина',
+  'Татьяна'
+];
+
+// Определяет случайное описание, сообщение, имя - тип строка
 /**
  * @template Item
  * @param {Item[]} list
@@ -16,7 +31,8 @@ const pickItemFromList = (list) => {
   return list[index];
 };
 
-// Определяет количество лайков
+
+// Определяет количество лайков, номер фото аватара - тип число
 /**
  * @param {number} min
  * @param {number} max
@@ -29,23 +45,47 @@ const pickIntegerInRange = (min, max) => {
 
 };
 
+// КОММЕНТАРИИ
 /**
+ * создаст объект комментария
+ * @param {number} id
+ * @return {CommentState}
+ */
+const createCommentState = (id) => {
+  const avatar = `img/avatar-${pickIntegerInRange(1, 6)}.svg`;
+  const message = pickItemFromList(messages);
+  const name = pickItemFromList(names);
+
+  return {id, avatar, message, name};
+};
+
+/**
+ * создаст список комментариев
+ * @param {number} length
+ * @return {CommentState[]}
+ */
+const createCommentStateList = (length) => {
+  const list = new Array(length).fill(1);
+
+  return list.map((start, index) => createCommentState(start + index));
+};
+
+/**
+ * создаст объект фотографии
  * @param {number} id
  * @return {ImageState}
 */
-
-// Функция объекта с возвратом
 const createImageState = (id) => {
   const url = `photos/${id}.jpg`;
   const description = pickItemFromList(descriptions);
   const likes = pickIntegerInRange(15, 200);
-  const comments = [];
+  const comments = createCommentStateList(pickIntegerInRange(0, 20));
 
   return {id, url, description, likes, comments};
 };
 
-// Генерирует список с длинной 25 (строк)
 /**
+ * создаст список объектов описывающие фотографии
  * @param {number} length
  * @return {ImageState[]}
 */
@@ -54,5 +94,5 @@ const createImageStateList = (length = 25) => {
 
   return list.map((start, index) => createImageState(start + index));
 };
-createImageStateList();
 
+createImageStateList();

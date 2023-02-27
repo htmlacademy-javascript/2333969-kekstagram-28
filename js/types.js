@@ -4,7 +4,7 @@
  * @prop {string} url
  * @prop {string} description
  * @prop {number} likes
- * @prop {CommentState[]} commits
+ * @prop {CommentState[]} comments
  */
 
 /**
