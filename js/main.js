@@ -1,5 +1,5 @@
 // файл util.js - модуль с вспомогательными функциями
-import { } from './util.js';
+import './util.js';
 
 // файл data.js - модуль, который создаёт данные
-import { } from './data,js';
+import './data,js';
