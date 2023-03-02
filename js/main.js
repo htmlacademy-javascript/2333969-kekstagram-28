@@ -1,5 +1,5 @@
-// файл util.js - модуль с вспомогательными функциями
-import './util.js';
+import createImageStateList from './data.js';
 
-// файл data.js - модуль, который создаёт данные
-import './data,js';
+createImageStateList();
+
+
