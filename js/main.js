@@ -1,8 +1,12 @@
-import createImageStateList from './data.js';
+// Подключаем весь файл gallery.js
+import './gallery.js';
 
-createImageStateList();
-<<<<<<< HEAD
+// подключаем функцию renderPictures из файла gallery.js
+import initGallery from './gallery.js';
+
+// Подключаем функцию createImageStateList из файла data.js
+import createPictureStateList from './data.js';
+
+initGallery(createPictureStateList());
 
 
-=======
->>>>>>> bc42eceb593a478c8063bc3e1af9112d1a95f210
