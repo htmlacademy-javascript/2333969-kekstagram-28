@@ -92,7 +92,9 @@ const initGallery = (data) => {
   // NOTE: Сортировка
 
   renderPictures(data);
-  // updatePreview(data[0]);
+
+  //updatePreview(data[0]);
+  //openPopup(popup);
 };
 
 export default initGallery;
