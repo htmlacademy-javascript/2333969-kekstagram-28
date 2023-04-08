@@ -50,7 +50,7 @@ const createComment = ((data) => {
 
 const updatePreview = (data) => {
 
-  // находим изображение в контейнере в тужt переменную preview + туда же тег с картинкой,
+  // находим изображение в контейнере в туже переменную preview + туда же тег с картинкой,
   // после устанавливаем атрибут в src -> data.url
   preview.querySelector('.big-picture__img img').setAttribute('src', data.url);
 
