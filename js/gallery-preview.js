@@ -24,7 +24,7 @@ const commentTemplate = discussion.querySelector('.social__comment');
  * @param {CommentState} data
  * @return {HTMLLIElement}
  */
-const createComment = (data => {
+const createComment = ((data) => {
   const comment =
     /**
      * @type {HTMLLIElement}
