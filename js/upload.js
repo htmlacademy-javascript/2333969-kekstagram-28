@@ -15,8 +15,8 @@ const popup = form.querySelector('.img-upload__overlay');
 // инициализируем библиотеку pristine
 // @ts-ignore
 const pristine = new Pristine(form, {
-	classTo: 'img-upload__wrapper',
-	errorTextParent: 'img-upload__field-wrapper'
+  classTo: 'img-upload__wrapper',
+  errorTextParent: 'img-upload__field-wrapper'
 });
 
 
@@ -26,11 +26,11 @@ const pristine = new Pristine(form, {
  * @param {(tags: string[]) => boolean} validate
  */
 const addHashtagsValitator = (message, validate) => {
-	pristine.addValidator(form.hashtags, (value) => {
-		const tags = value.split(' ').filter(Boolean);
+  pristine.addValidator(form.hashtags, (value) => {
+    const tags = value.split(' ').filter(Boolean);
 
-		return validate(tags);
-	}, message, 1, true);
+    return validate(tags);
+  }, message, 1, true);
 };
 
 /**
@@ -40,7 +40,7 @@ const addHashtagsValitator = (message, validate) => {
  */
 const addDescriptionValidator = (message, validate) => {
 
-	pristine.addValidator(form.description, validate, message);
+  pristine.addValidator(form.description, validate, message);
 };
 
 /**
@@ -48,11 +48,11 @@ const addDescriptionValidator = (message, validate) => {
  * @param {Event & {target: HTMLInputElement}} event
 */
 const onFormChange = (event) => {
-	if (event.target === form.filename) {
-		// TODO: сделать изображение
+  if (event.target === form.filename) {
+    // TODO: сделать изображение
 
-		openPopup(popup);
-	}
+    openPopup(popup);
+  }
 
 };
 
@@ -62,18 +62,18 @@ const onFormChange = (event) => {
  * @param {SubmitEvent} event
 */
 const onFormSubmit = (event) => {
-	event.preventDefault();
+  event.preventDefault();
 
-	pristine.validate();
+  pristine.validate();
 };
 
 // обработчик на очистку формы от подсказок
 const onFormReset = () => {
-	pristine.reset();
+  pristine.reset();
 
 };
 
-openPopup(popup);
+
 
 addHashtagsValitator('Хэш-теги должны начинаться с символа # (решётка)', (tags) => tags.every((tag) => tag.startsWith('#')));
 
@@ -99,8 +99,8 @@ addHashtagsValitator('Хэш-теги не должны повторяться',
 
 
 addDescriptionValidator(
-	'Длина описания не должна превышать 140 символов',
-	(description) => description.length <= 140
+  'Длина описания не должна превышать 140 символов',
+  (description) => description.length <= 140
 );
 
 form.addEventListener('change', onFormChange);
