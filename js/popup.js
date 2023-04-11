@@ -72,4 +72,3 @@ const openPopup = (popup) => {
 };
 
 export default openPopup;
-
