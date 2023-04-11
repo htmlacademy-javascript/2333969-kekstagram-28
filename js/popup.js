@@ -10,8 +10,6 @@ const onDocumentKeyDown = (event) => {
   // переменная говорящая -  является ли элемент в фокусе текстовым полем
   const isTextField = event.target.matches('input[type="text"], textarea');
 
-  console.log(event.target, {isTextField});
-
   // условие: если нажат Esc и && в фокусе не текстовое поле тогда форма закрывается
   if (isEscapeKey && !isTextField) {
     /**

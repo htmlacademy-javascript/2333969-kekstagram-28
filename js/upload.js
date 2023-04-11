@@ -74,7 +74,6 @@ const onFormReset = () => {
 };
 
 
-
 addHashtagsValitator('Хэш-теги должны начинаться с символа # (решётка)', (tags) => tags.every((tag) => tag.startsWith('#')));
 
 // условие в регулярном выражении: /^#[a-zа-яё0-9]+$/
