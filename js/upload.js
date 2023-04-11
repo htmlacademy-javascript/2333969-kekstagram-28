@@ -1,3 +1,4 @@
+import updatePreview from './upload-preview.js';
 import openPopup from './popup.js';
 
 // находим класс с формой: form class=".img-upload__form"
@@ -49,7 +50,13 @@ const addDescriptionValidator = (message, validate) => {
 */
 const onFormChange = (event) => {
   if (event.target === form.filename) {
-    // TODO: сделать изображение
+
+
+    // константа с данными - event.target со свойством files
+    const data = event.target.files.item(0);
+
+    // вызов функции из upload-preview.js
+    updatePreview(data);
 
     openPopup(popup);
   }
