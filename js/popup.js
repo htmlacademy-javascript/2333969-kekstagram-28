@@ -1,11 +1,17 @@
 // событие для закрытия popup нажатием на клавишу Esc
 /**
  *
- * @param {KeyboardEvent} event
+ * @param {KeyboardEvent & {target: Element}} event
  */
 const onDocumentKeyDown = (event) => {
-  // условие: если event.key начинается с Esc
-  if (event.key.startsWith('Esc')) {
+
+  // переменная говорящая что нажат Esc
+  const isEscapeKey = event.key.startsWith('Esc');
+  // переменная говорящая -  является ли элемент в фокусе текстовым полем
+  const isTextField = event.target.matches('input[type="text"], textarea');
+
+  // условие: если нажат Esc и && в фокусе не текстовое поле тогда форма закрывается
+  if (isEscapeKey && !isTextField) {
     /**
      * @type {HTMLButtonElement}    //тип для метода click к переменной cancelButton на 20й строке
      */
