@@ -143,11 +143,8 @@ const initGallery = (data) => {
 
   menu.classList.remove('img-filters--inactive');
   menu.addEventListener('click', onMenuClick);
-  menu.addEventListener('change', onMenuChange, true);
+  menu.addEventListener('change', onMenuChange);
   renderPictures(data);
-
-  //updatePreview(data[0]);
-  //openPopup(popup);
 };
 
 export default initGallery;
