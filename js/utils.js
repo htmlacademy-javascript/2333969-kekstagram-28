@@ -1,24 +1,16 @@
 /**
- * Выбирет случайный элемент из любого списка [] (универсальный тип)
- * @template Item
- * @param {Item[]} list
- * @return {Item}
+ *
+ * @param {string} url
+ * @param {RequestInit} [options]
+ * @return {Promise}
  */
-export const pickItemFromList = (list) => {
-  const index = Math.floor(Math.random() * list.length);
 
-  return list[index];
-};
+export const request = async (url, options) => {
+  const response = await fetch(url, options);
 
-/**
- * Выбирает случайное целое число в диапазоне
- * @param {number} min
- * @param {number} max
- * @return {number}
- */
-export const pickIntegerInRange = (min, max) => {
-  const value = min + Math.random() * (max - min);
+  if (!response.ok) {
+    throw new Error(`${response.status}. ${response.statusText}`);
+  }
 
-  return Math.round(value);
-
+  return response.json();
 };
