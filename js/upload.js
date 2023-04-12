@@ -1,5 +1,8 @@
 import updatePreview from './upload-preview.js';
 import openPopup from './popup.js';
+import openStatusPopup from './status-popup.js';
+import {request} from './utils.js';
+
 
 // находим класс с формой: form class=".img-upload__form"
 /**
@@ -44,6 +47,28 @@ const addDescriptionValidator = (message, validate) => {
   pristine.addValidator(form.description, validate, message);
 };
 
+
+const sendFormData = async () => {
+  const url = form.getAttribute('action');
+  const method = form.getAttribute('method');
+  const body = new FormData(form);
+
+  form.submitButton.setAttribute('disabled', '');
+
+  try {
+    await request(url, {method, body});
+
+    form.resetButton.click();
+
+    openStatusPopup('success');
+
+  } catch (exception) {
+    openStatusPopup('error');
+  }
+
+  form.submitButton.removeAttribute('disabled', '');
+};
+
 /**
  *
  * @param {Event & {target: HTMLInputElement}} event
@@ -71,7 +96,10 @@ const onFormChange = (event) => {
 const onFormSubmit = (event) => {
   event.preventDefault();
 
-  pristine.validate();
+  if (pristine.validate()) {
+    sendFormData();
+  }
+
 };
 
 // обработчик на очистку формы от подсказок

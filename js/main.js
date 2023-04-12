@@ -1,10 +1,20 @@
-// Подключаем функцию createImageStateList из файла data.js
-import createPictureStateList from './data.js';
-
-// подключаем функцию renderPictures из файла gallery.js
 import initGallery from './gallery.js';
-
-// подключаем upload.js
+import openStatusPopup from './status-popup.js';
 import './upload.js';
+import {request} from './utils.js';
 
-initGallery(createPictureStateList());
+
+try {
+  /**
+   * @type {PictureState[]}
+   */
+  const data = await request('https://28.javascript.pages.academy/kekstagram/data');
+
+  initGallery(data);
+
+} catch (exception) {
+  const title = `Ошибка: ${exception.message}`;
+  const button = 'Закрыть';
+
+  openStatusPopup('error', {title, button});
+}
