@@ -66,7 +66,7 @@ const createPicture = (data) => {
   // создаём связь через замыкания между объектом PictureState (data) и DOM-элементом picture,
   // а именно добавляем обработчик события к DOM-элементу picture с действием на клик
   // по элементу(в нашем случае кли к по миниатюре) с последующим вызова функции
-  picture.addEventListener('click', () => {
+  picture.addEventListener('click', (event) => {
     // при клике происходит подстановка/обновления данных в popup
     updatePreview(data);
     // показываем окно popup
@@ -143,11 +143,8 @@ const initGallery = (data) => {
 
   menu.classList.remove('img-filters--inactive');
   menu.addEventListener('click', onMenuClick);
-  menu.addEventListener('change', onMenuChange, true);
+  menu.addEventListener('change', onMenuChange);
   renderPictures(data);
-
-  //updatePreview(data[0]);
-  //openPopup(popup);
 };
 
 export default initGallery;
