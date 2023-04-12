@@ -92,6 +92,20 @@ const effectSlider = noUiSlider.create(
   createSliderOptions(Effect.NONE)
 );
 
+
+/**
+ *
+ * @param {string} url
+ */
+const setPicture = (url) => {
+  picture.setAttribute('src', url);
+
+  effectPicker.querySelectorAll('span').forEach((span) => {
+    span.style.setProperty('background-image', `url(${url})`);
+  });
+};
+
+
 // передача/установка % масштаба изображения
 /**
  *
@@ -175,8 +189,12 @@ const effectSliderUpdate = () => {
 
 // функция обновления, с передачей в неё данных в виде файла выбранного пользователем
 const updatePreview = (data) => {
-  // TODO: Подстановка изображения
+
   void data;
+
+
+  setPicture(URL.createObjectURL(data));
+
   setScale(Scale.MAX);
 
   // установка эффектов из списка Effect
