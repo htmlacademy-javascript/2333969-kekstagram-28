@@ -31,7 +31,7 @@ const pristine = new Pristine(form, {
  */
 const addHashtagsValitator = (message, validate) => {
   pristine.addValidator(form.hashtags, (value) => {
-    const tags = value.split(' ').filter(Boolean);
+    const tags = value.toLowerCase().split(' ').filter(Boolean);
 
     return validate(tags);
   }, message, 1, true);
@@ -122,7 +122,7 @@ addHashtagsValitator('Хэш-теги должны начинаться с си�
 // 0-9 → все цифры от 0 до 9
 // $ → конец строки
 // если после последнего слеша / поставить i то это означает, что не важно какой регистр: /^#[a-zа-яё0-9]+$/i
-addHashtagsValitator('После решётки # буквы/цифры', (tags) => tags.every((tag) => /^#[a-zа-яё0-9]+$/i.test(tag)));
+addHashtagsValitator('После решётки # буквы/цифры', (tags) => tags.every((tag) => /^#[a-zа-яё0-9]+$/.test(tag)));
 
 
 addHashtagsValitator('Максимальная длинна одного хэш-тега 20 символов', (tags) => tags.every((tag) => tag.length <= 20));
